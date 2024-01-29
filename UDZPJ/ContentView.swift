@@ -51,11 +51,6 @@ struct ContentView: View {
 #endif
             .onChange(of: selectedImage, addItem)
             .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
                 ToolbarItem {
                     Button("+", systemImage: "plus") {
                         self.showCamera.toggle()
