@@ -9,17 +9,26 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @State private var showCamera = false
+    @State private var selectedImage: UIImage?
+    @State var image: UIImage?
+    
+    
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Query private var photos: [PhotoEntry]
 
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(items) { item in
+                ForEach(photos) { photo in
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        let p = UIImage(data: photo.image!)
+                        Image(uiImage: p!)
+                            .resizable()
+                            .scaledToFit()
+                        Text(photo.prediction)
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        Text(photo.prediction)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -27,6 +36,7 @@ struct ContentView: View {
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
+            .onChange(of: selectedImage, addItem)
             .toolbar {
 #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -34,8 +44,10 @@ struct ContentView: View {
                 }
 #endif
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button("+", systemImage: "plus") {
+                        self.showCamera.toggle()
+                    }.fullScreenCover(isPresented: self.$showCamera) {
+                        accessCameraView(selectedImage: self.$selectedImage)
                     }
                 }
             }
@@ -45,16 +57,18 @@ struct ContentView: View {
     }
 
     private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+        if let img = self.$selectedImage.wrappedValue {
+            let myData = img.pngData()
+            let newEntry = PhotoEntry(img: myData)
+            modelContext.insert(newEntry)
+            
         }
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(items[index])
+                modelContext.delete(photos[index])
             }
         }
     }
@@ -62,5 +76,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: PhotoEntry.self, inMemory: true)
 }

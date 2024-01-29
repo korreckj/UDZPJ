@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		E642CB942B62B2050010A48E /* UDZPJApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CB932B62B2050010A48E /* UDZPJApp.swift */; };
 		E642CB962B62B2050010A48E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CB952B62B2050010A48E /* ContentView.swift */; };
-		E642CB982B62B2050010A48E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CB972B62B2050010A48E /* Item.swift */; };
 		E642CB9A2B62B2060010A48E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E642CB992B62B2060010A48E /* Assets.xcassets */; };
 		E642CB9E2B62B2060010A48E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E642CB9D2B62B2060010A48E /* Preview Assets.xcassets */; };
 		E642CBA82B62B2060010A48E /* UDZPJTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CBA72B62B2060010A48E /* UDZPJTests.swift */; };
 		E642CBB22B62B2060010A48E /* UDZPJUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CBB12B62B2060010A48E /* UDZPJUITests.swift */; };
 		E642CBB42B62B2060010A48E /* UDZPJUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CBB32B62B2060010A48E /* UDZPJUITestsLaunchTests.swift */; };
+		E642CBC12B62B27D0010A48E /* PhotoEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CBC02B62B27D0010A48E /* PhotoEntry.swift */; };
+		E642CBC32B62B6630010A48E /* accessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CBC22B62B6630010A48E /* accessCameraView.swift */; };
+		E6D381112B67022D003D849C /* DetroitZoo1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6D381102B67022D003D849C /* DetroitZoo1.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,6 @@
 		E642CB902B62B2050010A48E /* UDZPJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UDZPJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E642CB932B62B2050010A48E /* UDZPJApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDZPJApp.swift; sourceTree = "<group>"; };
 		E642CB952B62B2050010A48E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		E642CB972B62B2050010A48E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E642CB992B62B2060010A48E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E642CB9B2B62B2060010A48E /* UDZPJ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UDZPJ.entitlements; sourceTree = "<group>"; };
 		E642CB9D2B62B2060010A48E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -47,6 +48,9 @@
 		E642CBAD2B62B2060010A48E /* UDZPJUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UDZPJUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E642CBB12B62B2060010A48E /* UDZPJUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDZPJUITests.swift; sourceTree = "<group>"; };
 		E642CBB32B62B2060010A48E /* UDZPJUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDZPJUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E642CBC02B62B27D0010A48E /* PhotoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntry.swift; sourceTree = "<group>"; };
+		E642CBC22B62B6630010A48E /* accessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accessCameraView.swift; sourceTree = "<group>"; };
+		E6D381102B67022D003D849C /* DetroitZoo1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DetroitZoo1.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +101,11 @@
 		E642CB922B62B2050010A48E /* UDZPJ */ = {
 			isa = PBXGroup;
 			children = (
+				E6D381102B67022D003D849C /* DetroitZoo1.mlmodel */,
 				E642CB932B62B2050010A48E /* UDZPJApp.swift */,
 				E642CB952B62B2050010A48E /* ContentView.swift */,
-				E642CB972B62B2050010A48E /* Item.swift */,
+				E642CBC02B62B27D0010A48E /* PhotoEntry.swift */,
+				E642CBC22B62B6630010A48E /* accessCameraView.swift */,
 				E642CB992B62B2060010A48E /* Assets.xcassets */,
 				E642CB9B2B62B2060010A48E /* UDZPJ.entitlements */,
 				E642CB9C2B62B2060010A48E /* Preview Content */,
@@ -263,8 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E642CB962B62B2050010A48E /* ContentView.swift in Sources */,
-				E642CB982B62B2050010A48E /* Item.swift in Sources */,
 				E642CB942B62B2050010A48E /* UDZPJApp.swift in Sources */,
+				E642CBC12B62B27D0010A48E /* PhotoEntry.swift in Sources */,
+				E642CBC32B62B6630010A48E /* accessCameraView.swift in Sources */,
+				E6D381112B67022D003D849C /* DetroitZoo1.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +436,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need to use the camera to take photos.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -447,6 +456,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -466,6 +476,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need to use the camera to take photos.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -485,6 +496,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
