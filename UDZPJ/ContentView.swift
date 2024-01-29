@@ -10,9 +10,14 @@ import SwiftData
 
 struct ContentView: View {
     @State private var showCamera = false
+    #if os(iOS)
     @State private var selectedImage: UIImage?
     @State var image: UIImage?
-    
+    #endif
+    #if os(macOS)
+    @State private var selectedImage: NSImage?
+    @State var image: NSImage?
+    #endif
     
     @Environment(\.modelContext) private var modelContext
     @Query private var photos: [PhotoEntry]
@@ -22,10 +27,18 @@ struct ContentView: View {
             List {
                 ForEach(photos) { photo in
                     NavigationLink {
+                        #if os(iOS)
                         let p = UIImage(data: photo.image!)
                         Image(uiImage: p!)
                             .resizable()
                             .scaledToFit()
+                        #endif
+                        #if os(macOS)
+                        let p = NSImage(data: photo.image!)
+                        Image(nsImage: p!)
+                            .resizable()
+                            .scaledToFit()
+                        #endif
                         Text(photo.prediction)
                     } label: {
                         Text(photo.prediction)

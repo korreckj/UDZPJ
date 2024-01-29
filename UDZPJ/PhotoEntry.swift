@@ -7,7 +7,12 @@
 
 import Foundation
 import SwiftData
+#if os(iOS)
 import UIKit
+#endif
+#if os(macOS)
+import Cocoa
+#endif
 import CoreML
 import Vision
 
@@ -20,8 +25,7 @@ final class PhotoEntry {
     init(img: Data?) {
         self.image = img
         do {
-            let uiImage = UIImage(data: self.image!)!
-            let ciImage = CIImage(image: uiImage)!
+            let ciImage = CIImage(data: self.image!)!
             let config = MLModelConfiguration()
             let mlModel = try DetroitZoo1(configuration: config)
             let vncModel = try VNCoreMLModel(for: mlModel.model)
