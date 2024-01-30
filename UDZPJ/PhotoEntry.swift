@@ -59,7 +59,7 @@ final class PhotoEntry {
                 
                 let classifications = results as! [VNClassificationObservation]
                 
-                self.prediction = classifications.first?.identifier.uppercased() ?? ""
+                self.prediction = classifications.first?.identifier ?? ""
             }
             
         }
