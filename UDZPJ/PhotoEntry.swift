@@ -20,10 +20,14 @@ import Vision
 final class PhotoEntry {
     @Attribute(.externalStorage) var image: Data? = nil
     var prediction: String = ""
-    var correction: String = ""
     
     init(img: Data?) {
         self.image = img
+        runPredictions()
+    }
+    
+    
+    public func runPredictions() {
         do {
             let ciImage = CIImage(data: self.image!)!
             let config = MLModelConfiguration()

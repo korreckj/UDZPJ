@@ -23,6 +23,9 @@ struct EditPhotoView: View {
             .scaledToFit()
         #endif
         Text(photo.prediction)
+        Button("Refresh") {
+            photo.runPredictions()
+        }
     }
 }
 
