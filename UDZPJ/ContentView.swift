@@ -50,6 +50,7 @@ struct ContentView: View {
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
             .onChange(of: selectedImage, addItem)
+            .navigationTitle("UDZ Photo Journal")
             .toolbar {
                 ToolbarItem {
                     Button("+", systemImage: "plus") {
