@@ -23,7 +23,7 @@ struct EditPhotoView: View {
             .scaledToFit()
         #endif
         Text(photo.prediction)
-        Button("Refresh") {
+        Button("Refresh", systemImage: "arrow.circlepath") {
             photo.runPredictions()
         }
     }
