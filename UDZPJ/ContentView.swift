@@ -27,19 +27,7 @@ struct ContentView: View {
             List {
                 ForEach(photos) { photo in
                     NavigationLink {
-                        #if os(iOS)
-                        let p = UIImage(data: photo.image!)
-                        Image(uiImage: p!)
-                            .resizable()
-                            .scaledToFit()
-                        #endif
-                        #if os(macOS)
-                        let p = NSImage(data: photo.image!)
-                        Image(nsImage: p!)
-                            .resizable()
-                            .scaledToFit()
-                        #endif
-                        Text(photo.prediction)
+                        EditPhotoView(photo: photo)
                     } label: {
                         Text(photo.prediction)
                     }
@@ -61,7 +49,7 @@ struct ContentView: View {
                 }
             }
         } detail: {
-            Text("Select an item")
+            Text("Select a Photo Entry")
         }
     }
 
