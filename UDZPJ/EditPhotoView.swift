@@ -26,7 +26,9 @@ struct EditPhotoView: View {
         Button("Refresh", systemImage: "arrow.circlepath") {
             photo.runPredictions()
         }
-        Text(photo.information)
+        ScrollView() {
+            Text(photo.information)
+        }
     }
 }
 
