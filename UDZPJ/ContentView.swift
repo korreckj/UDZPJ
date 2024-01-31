@@ -52,7 +52,7 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("+", systemImage: "plus") {
+                    Button("+", systemImage: "camera") {
                         self.showCamera.toggle()
                     }.fullScreenCover(isPresented: self.$showCamera) {
                         accessCameraView(selectedImage: self.$selectedImage)
