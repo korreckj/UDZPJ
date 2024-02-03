@@ -23,8 +23,17 @@ struct EditPhotoView: View {
             .scaledToFit()
         #endif
         Text(photo.prediction)
-        Button("Refresh", systemImage: "arrow.circlepath") {
-            photo.runPredictions()
+        HStack() {
+            Button("Refresh", systemImage: "arrow.circlepath") {
+                photo.runPredictions()
+            }
+            let sharePhoto: Photo = Photo(image: Image(uiImage: p!), caption: "Taken with UDZ Photo Journal")
+            
+            ShareLink(
+                item: sharePhoto,
+                preview: SharePreview(
+                    sharePhoto.caption,
+                    image: sharePhoto.image))
         }
         ScrollView() {
             Text(photo.information)
@@ -32,6 +41,16 @@ struct EditPhotoView: View {
     }
 }
 
+
+struct Photo: Transferable {
+    static var transferRepresentation: some TransferRepresentation {
+        ProxyRepresentation(exporting: \.image)
+    }
+
+
+    public var image: Image
+    public var caption: String
+}
 //#Preview {
 //    EditPhotoView()
 //}
