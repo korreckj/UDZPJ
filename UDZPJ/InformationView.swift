@@ -9,10 +9,14 @@ import SwiftUI
 
 struct InformationView: View {
     var body: some View {
-        Text("Written By: Jeremiah Korreck")
-        Text("Animal facts written by chatGPT 3.5")
-        
+        Spacer()
+        Text("Unofficial Detroit Zoo Photo Journal\n")
+            .bold()
+        Text("Written By: Jeremiah Korreck\n\n")
+        Text("Animal facts written by chatGPT 3.5\n")
         Text("This app is an experiment in getting a working image classifier to correctly label all the animals on the map of Detroit Zoo.")
+            .padding(10)
+        Spacer()
     }
 }
 
