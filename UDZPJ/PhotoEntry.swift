@@ -30,7 +30,9 @@ final class PhotoEntry {
     
     public func runPredictions() {
         do {
-            let ciImage = CIImage(data: self.image!)!
+            guard let ciImage = CIImage(data: self.image!) else {
+                fatalError("Could not create ciimage")
+            }
             let config = MLModelConfiguration()
             let mlModel = try DetroitZoo1(configuration: config)
             let vncModel = try VNCoreMLModel(for: mlModel.model)
