@@ -23,6 +23,8 @@ struct EditPhotoView: View {
             .scaledToFit()
         #endif
         Text(photo.prediction)
+            .padding(10)
+            .bold()
         HStack() {
             Button("Refresh", systemImage: "arrow.circlepath") {
                 photo.runPredictions()
@@ -39,6 +41,7 @@ struct EditPhotoView: View {
         }
         ScrollView() {
             Text(photo.information)
+                .padding(10)
         }
     }
 }
