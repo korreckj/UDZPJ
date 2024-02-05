@@ -27,7 +27,7 @@ struct EditPhotoView: View {
             Button("Refresh", systemImage: "arrow.circlepath") {
                 photo.runPredictions()
             }
-            let sharePhoto: Photo = Photo(image: Image(uiImage: p!), caption: "Taken with UDZ Photo Journal")
+            let sharePhoto: Photo = Photo(image: Image(uiImage: p!), caption: "Share your photo!")
             
             ShareLink(
                 item: sharePhoto,
