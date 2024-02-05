@@ -27,6 +27,7 @@ struct EditPhotoView: View {
             Button("Refresh", systemImage: "arrow.circlepath") {
                 photo.runPredictions()
             }
+            .padding(10)
             let sharePhoto: Photo = Photo(image: Image(uiImage: p!), caption: "Share your photo!")
             
             ShareLink(
@@ -34,6 +35,7 @@ struct EditPhotoView: View {
                 preview: SharePreview(
                     sharePhoto.caption,
                     image: sharePhoto.image))
+            .padding(10)
         }
         ScrollView() {
             Text(photo.information)
