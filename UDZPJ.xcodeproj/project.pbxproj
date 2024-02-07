@@ -16,6 +16,7 @@
 		E642CBB42B62B2060010A48E /* UDZPJUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CBB32B62B2060010A48E /* UDZPJUITestsLaunchTests.swift */; };
 		E642CBC12B62B27D0010A48E /* PhotoEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CBC02B62B27D0010A48E /* PhotoEntry.swift */; };
 		E642CBC32B62B6630010A48E /* accessCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642CBC22B62B6630010A48E /* accessCameraView.swift */; };
+		E6534D182B730C0E009729EE /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6534D172B730C0E009729EE /* PhotosView.swift */; };
 		E693D05F2B6ED7BC00C8DB53 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693D05E2B6ED7BC00C8DB53 /* InformationView.swift */; };
 		E6BAA79F2B69382F003FAA0D /* EditPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BAA79E2B69382F003FAA0D /* EditPhotoView.swift */; };
 		E6D381112B67022D003D849C /* DetroitZoo1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6D381102B67022D003D849C /* DetroitZoo1.mlmodel */; };
@@ -52,6 +53,7 @@
 		E642CBB32B62B2060010A48E /* UDZPJUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDZPJUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E642CBC02B62B27D0010A48E /* PhotoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntry.swift; sourceTree = "<group>"; };
 		E642CBC22B62B6630010A48E /* accessCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accessCameraView.swift; sourceTree = "<group>"; };
+		E6534D172B730C0E009729EE /* PhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosView.swift; sourceTree = "<group>"; };
 		E693D05E2B6ED7BC00C8DB53 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		E6BAA79E2B69382F003FAA0D /* EditPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoView.swift; sourceTree = "<group>"; };
 		E6D381102B67022D003D849C /* DetroitZoo1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DetroitZoo1.mlmodel; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				E642CB9C2B62B2060010A48E /* Preview Content */,
 				E6BAA79E2B69382F003FAA0D /* EditPhotoView.swift */,
 				E693D05E2B6ED7BC00C8DB53 /* InformationView.swift */,
+				E6534D172B730C0E009729EE /* PhotosView.swift */,
 			);
 			path = UDZPJ;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				E693D05F2B6ED7BC00C8DB53 /* InformationView.swift in Sources */,
 				E642CB962B62B2050010A48E /* ContentView.swift in Sources */,
 				E642CB942B62B2050010A48E /* UDZPJApp.swift in Sources */,
+				E6534D182B730C0E009729EE /* PhotosView.swift in Sources */,
 				E642CBC12B62B27D0010A48E /* PhotoEntry.swift in Sources */,
 				E642CBC32B62B6630010A48E /* accessCameraView.swift in Sources */,
 				E6D381112B67022D003D849C /* DetroitZoo1.mlmodel in Sources */,

@@ -20,20 +20,16 @@ struct ContentView: View {
     @State var image: NSImage?
     #endif
     
+    @State private var sortOrder = [SortDescriptor(\PhotoEntry.prediction)]
+    @State private var searchText = ""
+    
     @Environment(\.modelContext) private var modelContext
     @Query private var photos: [PhotoEntry]
 
     var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(photos) { photo in
-                    NavigationLink {
-                        EditPhotoView(photo: photo)
-                    } label: {
-                        Text(photo.prediction)
-                    }
-                }
-                .onDelete(perform: deleteItems)
+            VStack() {
+                PhotosView(searchString: searchText, sortOrder: sortOrder)
             }
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
@@ -41,12 +37,25 @@ struct ContentView: View {
             .onChange(of: selectedImage, addItem)
             .navigationTitle("UDZ Photo Journal")
             .toolbar {
+                
                 ToolbarItem(placement: .topBarLeading) {
                     Button("info", systemImage: "i.circle") {
                         showAlert.toggle()
                     }
                     .sheet(isPresented: $showAlert) {
                         InformationView()
+                    }
+                }
+                
+                ToolbarItem() {
+                    Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                        Picker("Sort", selection: $sortOrder) {
+                            Text("Name (A-Z)")
+                                .tag([SortDescriptor(\PhotoEntry.prediction)])
+                            
+                            Text("Name (Z-A)")
+                                .tag([SortDescriptor(\PhotoEntry.prediction, order: .reverse)])
+                        }
                     }
                 }
                 
@@ -58,11 +67,15 @@ struct ContentView: View {
                     }
                 }
             }
+            .searchable(text: $searchText)
         } detail: {
             Text("Select a Photo Entry")
         }
+        
     }
 
+    
+    
     private func addItem() {
         if let img = self.$selectedImage.wrappedValue {
             let myData = img.pngData()
@@ -72,13 +85,7 @@ struct ContentView: View {
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(photos[index])
-            }
-        }
-    }
+    
 }
 
 #Preview {
