@@ -24,7 +24,6 @@ struct ContentView: View {
     @State private var searchText = ""
     
     @Environment(\.modelContext) private var modelContext
-    @Query private var photos: [PhotoEntry]
 
     var body: some View {
         NavigationSplitView {
