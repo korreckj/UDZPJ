@@ -50,34 +50,36 @@ struct EditPhotoView: View {
                         .padding(10)
                 }
             } else {
-                Image(uiImage: p!)
-                    .resizable()
-                    .scaledToFit()
-                    .aspectRatio(contentMode: .fit)
-                    .border(Color.accentColor)
-                    .clipped()
-                    .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height)
-                    .scaleEffect(currentZoom + totalZoom)
-                    .gesture(
-                        MagnifyGesture()
-                            .onChanged { value in
-                                currentZoom = value.magnification - 1
+                ScrollView([.vertical, .horizontal], showsIndicators: false) {
+                    Image(uiImage: p!)
+                        .resizable()
+                        .scaledToFit()
+                        .aspectRatio(contentMode: .fit)
+                        .border(Color.accentColor)
+                        .clipped()
+                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height)
+                        .scaleEffect(currentZoom + totalZoom)
+                        .gesture(
+                            MagnifyGesture()
+                                .onChanged { value in
+                                    currentZoom = value.magnification - 1
+                                }
+                                .onEnded { value in
+                                    totalZoom += currentZoom
+                                    currentZoom = 0
+                                }
+                        )
+                        .accessibilityZoomAction { action in
+                            if action.direction == .zoomIn {
+                                totalZoom += 1
+                            } else {
+                                totalZoom -= 1
                             }
-                            .onEnded { value in
-                                totalZoom += currentZoom
-                                currentZoom = 0
-                            }
-                    )
-                    .accessibilityZoomAction { action in
-                        if action.direction == .zoomIn {
-                            totalZoom += 1
-                        } else {
-                            totalZoom -= 1
                         }
-                    }
-                    .onTapGesture {
-                        showZoomablePhoto = false
-                    }
+                        .onTapGesture {
+                            showZoomablePhoto = false
+                        }
+                }
             }
         }
     }
