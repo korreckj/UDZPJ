@@ -53,11 +53,8 @@ struct EditPhotoView: View {
                 ScrollView([.vertical, .horizontal], showsIndicators: false) {
                     Image(uiImage: p!)
                         .resizable()
-                        .scaledToFit()
                         .aspectRatio(contentMode: .fit)
                         .border(Color.accentColor)
-                        .clipped()
-                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height)
                         .scaleEffect(currentZoom + totalZoom)
                         .gesture(
                             MagnifyGesture()
