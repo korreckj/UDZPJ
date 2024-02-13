@@ -11,15 +11,8 @@ import SwiftData
 struct ContentView: View {
     @State private var showCamera = false
     @State private var showAlert = false
-    #if os(iOS)
     @State private var selectedImage: UIImage?
-    @State var image: UIImage?
-    #endif
-    #if os(macOS)
-    @State private var selectedImage: NSImage?
-    @State var image: NSImage?
-    #endif
-    
+    @State var image: UIImage?    
     @State private var sortOrder = [SortDescriptor(\PhotoEntry.prediction)]
     @State private var searchText = ""
     
@@ -30,9 +23,6 @@ struct ContentView: View {
             VStack() {
                 PhotosView(searchString: searchText, sortOrder: sortOrder)
             }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
             .onChange(of: selectedImage, addItem)
             .navigationTitle("UDZ Photo Journal")
             .toolbar {

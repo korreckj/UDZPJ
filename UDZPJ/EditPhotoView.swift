@@ -12,6 +12,19 @@ struct EditPhotoView: View {
     @State private var currentZoom = 0.0
     @State private var totalZoom = 1.0
     @State private var showZoomablePhoto = false
+    @State private var dragOffset: CGSize = .zero
+    
+    
+    func onDragGestureStarted(value: DragGesture.Value) {
+        withAnimation(.easeIn(duration: 0.1)) {
+            dragOffset = value.translation
+        }
+    }
+    
+    var panGesture: some Gesture {
+        DragGesture()
+            .onChanged(onDragGestureStarted)
+    }
     
     var body: some View {
         VStack {
@@ -50,33 +63,35 @@ struct EditPhotoView: View {
                         .padding(10)
                 }
             } else {
-                ScrollView([.vertical, .horizontal], showsIndicators: false) {
-                    Image(uiImage: p!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .border(Color.accentColor)
-                        .scaleEffect(currentZoom + totalZoom)
-                        .gesture(
-                            MagnifyGesture()
-                                .onChanged { value in
-                                    currentZoom = value.magnification - 1
-                                }
-                                .onEnded { value in
-                                    totalZoom += currentZoom
-                                    currentZoom = 0
-                                }
-                        )
-                        .accessibilityZoomAction { action in
-                            if action.direction == .zoomIn {
-                                totalZoom += 1
-                            } else {
-                                totalZoom -= 1
+                Image(uiImage: p!)
+                    .resizable()
+                    .scaledToFill()
+                    .aspectRatio(contentMode: .fit)
+                    .border(Color.accentColor)
+                    .scaleEffect(currentZoom + totalZoom)
+                    .frame(maxHeight: .infinity)
+                    .gesture(panGesture)
+                    .gesture(
+                        MagnifyGesture()
+                            .onChanged { value in
+                                currentZoom = value.magnification - 1
                             }
+                            .onEnded { value in
+                                totalZoom += currentZoom
+                                currentZoom = 0
+                            }
+                    )
+                    .accessibilityZoomAction { action in
+                        if action.direction == .zoomIn {
+                            totalZoom += 1
+                        } else {
+                            totalZoom -= 1
                         }
-                        .onTapGesture {
-                            showZoomablePhoto = false
-                        }
-                }
+                    }
+                    .onTapGesture {
+                        showZoomablePhoto = false
+                    }
+                    .offset(dragOffset)
             }
         }
     }
