@@ -90,6 +90,9 @@ struct EditPhotoView: View {
                     }
                     .onTapGesture {
                         showZoomablePhoto = false
+                        totalZoom = 0
+                        currentZoom = 1
+                        dragOffset = .zero
                     }
                     .offset(dragOffset)
             }
