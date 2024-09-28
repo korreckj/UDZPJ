@@ -7,12 +7,14 @@
 
 import SwiftUI
 import SwiftData
+import PhotosUI
 
 struct ContentView: View {
     @State private var showCamera = false
     @State private var showAlert = false
     @State private var selectedImage: UIImage?
-    @State var image: UIImage?    
+    @State private var pickerItem: PhotosPickerItem?
+    @State var image: UIImage?
     @State private var sortOrder = [SortDescriptor(\PhotoEntry.prediction)]
     @State private var searchText = ""
     
@@ -24,6 +26,7 @@ struct ContentView: View {
                 PhotosView(searchString: searchText, sortOrder: sortOrder)
             }
             .onChange(of: selectedImage, addItem)
+            .onChange(of: pickerItem, processImport)
             .navigationTitle("UDZ Photo Journal")
             .toolbar {
                 
@@ -35,6 +38,10 @@ struct ContentView: View {
                         InformationView()
                     }
                 }
+                ToolbarItem(placement: .topBarLeading) {
+                    PhotosPicker("import", selection: $pickerItem, matching: .images)
+                }
+                
                 
                 ToolbarItem() {
                     Menu("Sort", systemImage: "arrow.up.arrow.down") {
@@ -73,7 +80,14 @@ struct ContentView: View {
             
         }
     }
-
+    
+    private func processImport() {
+        Task {
+            let img = try await pickerItem?.loadTransferable(type: Data.self)
+            selectedImage = UIImage(data: img!)
+        }
+    }
+    
     
 }
 
