@@ -40,10 +40,13 @@ struct EditPhotoView: View {
                     .onTapGesture {
                         showZoomablePhoto = true
                     }
-                    
-                Text(photo.prediction)
-                    .padding(10)
-                    .bold()
+                HStack() {
+                    Text(photo.prediction)
+                        .padding(10)
+                        .bold()
+                    Text("\(photo.confidence)%")
+                        .padding(10)
+                }
                 HStack() {
                     Button("Refresh", systemImage: "arrow.circlepath") {
                         photo.runPredictions()
