@@ -1,0 +1,1 @@
+This Unofficial Detroit Zoo Photo Journal is designed to use the model created https://github.com/korreckj/DetroitZooModel to identify animal photos taken at the zoo and provide a breif ammount of information on the animal.
