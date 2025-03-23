@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct UDZPJApp: App {
+    // setup for the ml model
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             PhotoEntry.self,

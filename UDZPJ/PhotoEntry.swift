@@ -4,6 +4,7 @@
 //
 //  Created by Jeremiah Korreck on 1/25/24.
 //
+// This creates the photo entry, runs the predictions, and inputs the information text
 
 import Foundation
 import SwiftData

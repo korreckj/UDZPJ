@@ -23,6 +23,7 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             VStack() {
+                // photosview provides the list for the app
                 PhotosView(searchString: searchText, sortOrder: sortOrder)
             }
             .onChange(of: selectedImage, addItem)
