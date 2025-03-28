@@ -8,12 +8,7 @@
 
 import Foundation
 import SwiftData
-#if os(iOS)
 import UIKit
-#endif
-#if os(macOS)
-import Cocoa
-#endif
 import CoreML
 import Vision
 
