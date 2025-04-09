@@ -11,7 +11,7 @@ import SwiftData
 
 
 struct PhotosView: View {
-    
+     
     @Environment(\.modelContext) private var modelContext
     @Query private var photos: [PhotoEntry]
     

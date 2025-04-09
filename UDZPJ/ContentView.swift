@@ -17,6 +17,8 @@ struct ContentView: View {
     @State var image: UIImage?
     @State private var sortOrder = [SortDescriptor(\PhotoEntry.prediction)]
     @State private var searchText = ""
+    @State private var newEntry = PhotoEntry(img: nil)
+    @State private var showEditView: Bool = false
     
     @Environment(\.modelContext) private var modelContext
 
@@ -25,6 +27,12 @@ struct ContentView: View {
             VStack() {
                 // photosview provides the list for the app
                 PhotosView(searchString: searchText, sortOrder: sortOrder)
+                    .navigationDestination(isPresented: $showEditView, destination: {
+                        EditPhotoView(photo: newEntry)
+                            .onDisappear {
+                                self.showEditView = false
+                            }
+                    })
             }
             .onChange(of: selectedImage, addItem)
             .onChange(of: pickerItem, processImport)
@@ -69,6 +77,7 @@ struct ContentView: View {
             Text("Select a Photo Entry")
         }
         
+        
     }
 
     
@@ -76,8 +85,9 @@ struct ContentView: View {
     private func addItem() {
         if let img = self.$selectedImage.wrappedValue {
             let myData = img.pngData()
-            let newEntry = PhotoEntry(img: myData)
+            newEntry = PhotoEntry(img: myData)
             modelContext.insert(newEntry)
+            showEditView.toggle()
             
         }
     }

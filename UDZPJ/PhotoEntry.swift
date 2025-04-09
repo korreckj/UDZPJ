@@ -21,7 +21,9 @@ final class PhotoEntry {
     
     init(img: Data?) {
         self.image = img
-        runPredictions()
+        if self.image != nil {
+            runPredictions()
+        }
     }
     
     
